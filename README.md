@@ -1,0 +1,1 @@
+# objectscriptquality-jenkins-integration
