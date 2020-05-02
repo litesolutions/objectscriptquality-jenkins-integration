@@ -13,7 +13,7 @@ echo "JENKINS CRUMB: "$JENKINS_CRUMB
 JOB_NAME_TO_CALL=${GIT_URL##*/}
 echo "JOB NAME TO CALL: "$JOB_NAME_TO_CALL
 
-EXISTING_JOB_NAME=$(curl $JENKINS_URL'/job/intersystems_iris_contests/job/'$JOB_NAME_TO_CALL'/api/json' -u $JENKINS_USER:$JENKINS_TOKEN | sed -E 's/.*"name":"?([^,"]*)"?.*/\1/')
+EXISTING_JOB_NAME=$(curl $JENKINS_URL'/job/intersystems_iris_contests_generated_jobs/job/'$JOB_NAME_TO_CALL'/api/json' -u $JENKINS_USER:$JENKINS_TOKEN | sed -E 's/.*"name":"?([^,"]*)"?.*/\1/')
 echo "NAME OF EXISTING JOB: "$EXISTING_JOB_NAME
 
 if [ "$EXISTING_JOB_NAME" != "$JOB_NAME_TO_CALL" ]
@@ -28,6 +28,6 @@ fi
 sleep 10
 
 echo "INVOKE "$JOB_NAME_TO_CALL
-curl -X POST -s --cookie $COOKIE_JAR $JENKINS_URL'/job/intersystems_iris_contests/job/'$JOB_NAME_TO_CALL'/build' -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_TOKEN -v
+curl -X POST -s --cookie $COOKIE_JAR $JENKINS_URL'/job/intersystems_iris_contests_generated_jobs/job/'$JOB_NAME_TO_CALL'/build' -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_TOKEN -v
 echo $JOB_NAME_TO_CALL" EXECUTED!"
 
