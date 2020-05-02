@@ -20,7 +20,7 @@ if [ "$EXISTING_JOB_NAME" != "$JOB_NAME_TO_CALL" ]
 then
     echo "JOB NOT EXISTS"
 
-    curl -X POST -s --cookie $COOKIE_JAR $JENKINS_URL'/job/intersystems_iris_contests_job_generator/job/intersystems_iris_contests_job_generator/buildWithParameters' --data 'token='$JOB_BUILD_TRIGGER_ACCESS_TOKEN --data 'GIT_URL='$GIT_URL --data 'BRANCH='$BRANCH -H "Content-Type:text/xml" -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_TOKEN -v
+    curl -X POST -s --cookie $COOKIE_JAR $JENKINS_URL'/job/intersystems_iris_contests_job_generator/job/intersystems_iris_contests_job_generator/buildWithParameters' --data-urlencode 'token='$JOB_BUILD_TRIGGER_ACCESS_TOKEN --data-urlencode 'GIT_URL='$GIT_URL --data-urlencode 'BRANCH='$BRANCH -H "Content-Type:text/xml" -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_TOKEN -v
     
     echo "JOB "$JOB_NAME_TO_CALL" CREATED!"
 fi  
