@@ -23,7 +23,7 @@ then
 
     curl -G -I --cookie $COOKIE_JAR $JENKINS_URL'/job/intersystems_iris_contests_job_generator/job/intersystems_iris_contests_job_generator/buildWithParameters?token='$JOB_BUILD_TRIGGER_ACCESS_TOKEN --data-urlencode 'GIT_URL='$GIT_URL --data-urlencode 'BRANCH='$BRANCH -H "Content-Type:text/xml" -u $JENKINS_USER:$JENKINS_TOKEN -v
     
-    sleep 10
+    sleep 30
     
     echo "JOB "$JOB_NAME_TO_CALL" CREATED!"
 fi  
