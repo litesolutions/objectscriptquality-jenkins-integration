@@ -11,7 +11,7 @@ COOKIE_JAR=/tmp/cookies
 JENKINS_CRUMB=$(curl --silent --cookie-jar $COOKIE_JAR -s -u $JENKINS_USER:$JENKINS_TOKEN $JENKINS_URL'/crumbIssuer/api/json' | sed -E 's/.*"crumb":"?([^,"]*)"?.*/\1/')
 echo "JENKINS CRUMB: "$JENKINS_CRUMB
 JOB_DISPLAY_NAME=${GIT_URL##*/}
-JOB_NAME_TO_CALL=intersystems_iris_contests_$JOB_DISPLAY_NAME
+JOB_NAME_TO_CALL=$JOB_DISPLAY_NAME
 echo "JOB NAME TO CALL: "$JOB_NAME_TO_CALL
 
 EXISTING_JOB_NAME=$(curl $JENKINS_URL'/job/intersystems_iris_contests/job/'$JOB_NAME_TO_CALL'/api/json' -u $JENKINS_USER:$JENKINS_TOKEN | sed -E 's/.*"name":"?([^,"]*)"?.*/\1/')
