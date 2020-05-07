@@ -2,7 +2,7 @@
 
 JENKINS_URL=https://community-jenkins.objectscriptquality.com
 JENKINS_USER=hook
-JENKINS_TOKEN=$JENKINS_OBJECTSCRIPTQUALITY_PASSWORD
+JENKINS_PASSWORD=$JENKINS_OBJECTSCRIPTQUALITY_PASSWORD
 JOB_BUILD_TRIGGER_ACCESS_TOKEN=$JENKINS_OBJECTSCRIPTQUALITY_TRIGGER_ACCESS_TOKEN
 JOB_GENERATOR=intersystems_iris_contests_job_generator
 TARGET_FOLDER=intersystems_iris_contests
@@ -10,7 +10,7 @@ GIT_URL=https://github.com/$GITHUB_REPOSITORY
 BRANCH=master
 COOKIE_JAR=/tmp/cookies
 
-JENKINS_CRUMB=$(curl --silent --cookie-jar $COOKIE_JAR -s -u $JENKINS_USER:$JENKINS_TOKEN $JENKINS_URL'/crumbIssuer/api/json' | sed -E 's/.*"crumb":"?([^,"]*)"?.*/\1/')
+JENKINS_CRUMB=$(curl --silent --cookie-jar $COOKIE_JAR -s -u $JENKINS_USER:$JENKINS_PASSWORD $JENKINS_URL'/crumbIssuer/api/json' | sed -E 's/.*"crumb":"?([^,"]*)"?.*/\1/')
 echo "Jenkins crumb: "$JENKINS_CRUMB
 JOB_DISPLAY_NAME=${GIT_URL##*/}
 JOB_NAME_TO_CALL=$JOB_DISPLAY_NAME
@@ -24,7 +24,7 @@ else
     JENKINS_JOB_URL=$JENKINS_URL'/job/'$TARGET_FOLDER'/job/'$JOB_NAME_TO_CALL
 fi
 
-EXISTING_JOB_NAME=$(curl $JENKINS_JOB_URL'/api/json' -u $JENKINS_USER:$JENKINS_TOKEN | sed -E 's/.*"name":"?([^,"]*)"?.*/\1/')
+EXISTING_JOB_NAME=$(curl $JENKINS_JOB_URL'/api/json' -u $JENKINS_USER:$JENKINS_PASSWORD | sed -E 's/.*"name":"?([^,"]*)"?.*/\1/')
 echo "Name of existing job: "$EXISTING_JOB_NAME
 
 if [ "$EXISTING_JOB_NAME" != "$JOB_NAME_TO_CALL" ]
@@ -39,6 +39,6 @@ then
 fi
 
 echo "Invoke "$JOB_NAME_TO_CALL
-curl -X POST -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/build' -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_TOKEN -v
+curl -X POST -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/build' -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_PASSWORD -v
 echo "Job '"$JOB_NAME_TO_CALL"' Executed!"
 
