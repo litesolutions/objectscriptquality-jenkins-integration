@@ -8,5 +8,5 @@ jobs:
 
     steps:
     - name: Execute ObjectScript Quality Analysis
-      run: wget https://raw.githubusercontent.com/litesolutions/objectscriptquality-jenkins-integration/master/iris-contest-hook.sh && sh ./iris-contest-hook.sh
+      run: wget https://raw.githubusercontent.com/litesolutions/objectscriptquality-jenkins-integration/master/iris-community-hook.sh && sh ./iris-community-hook.sh
 

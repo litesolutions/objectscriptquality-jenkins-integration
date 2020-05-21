@@ -1,5 +1,5 @@
 # Set variables
-TARGET_FOLDER=intersystems_iris_contests
+TARGET_FOLDER=intersystems_iris_community
 JOB_DISPLAY_NAME=${GIT_URL##*/}
 TEMPLATE_FILE=iris-community-job-template.xml
 TEMPLATE_PATH=/tmp/$TEMPLATE_FILE
