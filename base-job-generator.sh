@@ -5,7 +5,7 @@ TEMPLATE_FILE=base-job-template.xml
 TEMPLATE_PATH=/tmp/$TEMPLATE_FILE
 
 # Replace values from template
-cp $TEMPLATE /tmp
+cp $TEMPLATE_FILE /tmp
 sed -i -e 's|{{GIT_URL}}|'"$GIT_URL"'|' $TEMPLATE_PATH
 sed -i -e 's|{{BRANCH}}|'"$BRANCH"'|' $TEMPLATE_PATH
 sed -i -e 's|{{DISPLAY_NAME}}|'"$JOB_DISPLAY_NAME"'|' $TEMPLATE_PATH
