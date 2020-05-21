@@ -10,7 +10,7 @@ jobs:
     - name: Execute ObjectScript Quality Analysis
       env:
         JENKINS_OBJECTSCRIPTQUALITY_URL: https://community-jenkins.objectscriptquality.com
-        JENKINS_OBJECTSCRIPTQUALITY_USER: hook
+        JENKINS_OBJECTSCRIPTQUALITY_USER: my-hook-user
         JENKINS_OBJECTSCRIPTQUALITY_PASSWORD: ${{ secrets.jenkinsPass }}
         JENKINS_OBJECTSCRIPTQUALITY_TRIGGER_ACCESS_TOKEN: ${{ secrets.jobToken }}
         BRANCH_TO_ANALYZE: master
