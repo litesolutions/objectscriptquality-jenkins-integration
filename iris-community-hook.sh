@@ -6,7 +6,7 @@
 JENKINS_URL=https://community-jenkins.objectscriptquality.com
 JENKINS_USER=hook
 JENKINS_PASSWORD=je3MD3z9zSu9hPWP
-JOB_BUILD_TRIGGER_ACCESS_TOKEN=je3MD3z9zSu9hPWP
+JOB_BUILD_TRIGGER_ACCESS_TOKEN=a412415d-d56c-4425-91b8-162fd434828d
 JOB_GENERATOR=intersystems_iris_community_job_generator
 TARGET_FOLDER=intersystems_iris_community
 GIT_URL=https://github.com/$GITHUB_REPOSITORY
