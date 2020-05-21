@@ -1,11 +1,14 @@
 #!/bin/bash
 
+# Free server usage for community projects
+# Password and token are open to be used by any community user
+
 JENKINS_URL=https://community-jenkins.objectscriptquality.com
 JENKINS_USER=hook
-JENKINS_PASSWORD=$JENKINS_OBJECTSCRIPTQUALITY_PASSWORD
-JOB_BUILD_TRIGGER_ACCESS_TOKEN=$JENKINS_OBJECTSCRIPTQUALITY_TRIGGER_ACCESS_TOKEN
-JOB_GENERATOR=intersystems_iris_contests_job_generator
-TARGET_FOLDER=intersystems_iris_contests
+JENKINS_PASSWORD=je3MD3z9zSu9hPWP
+JOB_BUILD_TRIGGER_ACCESS_TOKEN=je3MD3z9zSu9hPWP
+JOB_GENERATOR=intersystems_iris_community_job_generator
+TARGET_FOLDER=intersystems_iris_community
 GIT_URL=https://github.com/$GITHUB_REPOSITORY
 BRANCH=master
 COOKIE_JAR=/tmp/cookies
