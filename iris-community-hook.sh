@@ -10,8 +10,10 @@ JOB_BUILD_TRIGGER_ACCESS_TOKEN=a412415d-d56c-4425-91b8-162fd434828d
 JOB_GENERATOR=intersystems_iris_community_job_generator
 TARGET_FOLDER=intersystems_iris_community
 GIT_URL=https://github.com/$GITHUB_REPOSITORY
-BRANCH=master
 COOKIE_JAR=/tmp/cookies
+
+# If branch is not defined use 'master'
+if [ -z $BRANCH_TO_ANALYZE ]; then BRANCH=master; else BRANCH=$BRANCH_TO_ANALYZE; fi
 
 JENKINS_CRUMB=$(curl --silent --cookie-jar $COOKIE_JAR -s -u $JENKINS_USER:$JENKINS_PASSWORD $JENKINS_URL'/crumbIssuer/api/json' | sed -E 's/.*"crumb":"?([^,"]*)"?.*/\1/')
 echo "Jenkins crumb: "$JENKINS_CRUMB
