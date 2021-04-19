@@ -24,5 +24,11 @@ then
     JENKINS_JOB_URL=$JENKINS_URL'/job/'$TARGET_FOLDER
 fi
 
-curl -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/createItem?name='$JOB_NAME_TO_GENERATE -H 'Jenkins-Crumb:'$JENKINS_CRUMB -H "Content-Type:text/xml" -u $JENKINS_USER:$JENKINS_PASSWORD --data-binary @$TEMPLATE_PATH
+curl -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/createItem?name='$JOB_NAME_TO_GENERATE \
+     -H 'Jenkins-Crumb:'$JENKINS_CRUMB \
+     -H "Content-Type:text/xml" \
+     -u $JENKINS_USER:$JENKINS_PASSWORD \
+     --data-binary @$TEMPLATE_PATH \
+     --data-urlencode json='{"parameter": [{"name":"BRANCH", "value":"$BRANCH"}]}'
+     
 rm $TEMPLATE_PATH
