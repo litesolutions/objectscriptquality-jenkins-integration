@@ -15,6 +15,16 @@ COOKIE_JAR=/tmp/cookies
 # If branch is not defined use 'master'
 if [ -z $BRANCH_TO_ANALYZE ]; then BRANCH=master; else BRANCH=$BRANCH_TO_ANALYZE; fi
 
+if [ -z $BRANCH_TO_ANALYZE ]; then
+    if [ -z $GITHUB_BASE_REF ]; then
+        BRANCH=$GITHUB_BASE_REF;
+    else
+        BRANCH=master;
+    fi
+else
+    BRANCH=$BRANCH_TO_ANALYZE;
+fi
+
 JENKINS_CRUMB=$(curl --silent --cookie-jar $COOKIE_JAR -s -u $JENKINS_USER:$JENKINS_PASSWORD $JENKINS_URL'/crumbIssuer/api/json' | sed -E 's/.*"crumb":"?([^,"]*)"?.*/\1/')
 echo "Jenkins crumb: "$JENKINS_CRUMB
 JOB_DISPLAY_NAME=${GIT_URL##*/}
