@@ -13,6 +13,6 @@ jobs:
         JENKINS_OBJECTSCRIPTQUALITY_USER: my-hook-user
         JENKINS_OBJECTSCRIPTQUALITY_PASSWORD: ${{ secrets.jenkinsPass }}
         JENKINS_OBJECTSCRIPTQUALITY_TRIGGER_ACCESS_TOKEN: ${{ secrets.jobToken }}
-        BRANCH_TO_ANALYZE: main
+        BRANCH_TO_ANALYZE: master
       run: wget https://raw.githubusercontent.com/litesolutions/objectscriptquality-jenkins-integration/master/base-hook.sh && sh ./base-hook.sh
 
