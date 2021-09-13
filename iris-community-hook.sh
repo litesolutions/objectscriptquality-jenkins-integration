@@ -13,11 +13,9 @@ GIT_URL=https://github.com/$GITHUB_REPOSITORY
 COOKIE_JAR=/tmp/cookies
 
 # If branch is not defined use 'master'
-if [ -z $BRANCH_TO_ANALYZE ]; then BRANCH=master; else BRANCH=$BRANCH_TO_ANALYZE; fi
-
 if [ -z $BRANCH_TO_ANALYZE ]; then
-    if [ -z $GITHUB_BASE_REF ]; then
-        BRANCH=$GITHUB_BASE_REF;
+    if [ -z $MAIN_BRANCH ]; then
+        BRANCH=$MAIN_BRANCH;
     else
         BRANCH=master;
     fi
