@@ -44,6 +44,6 @@ then
 fi
 
 echo "Invoke "$JOB_NAME_TO_CALL
-curl -K -X POST -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/build' -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_PASSWORD -v
+curl -k -X POST -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/build' -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_PASSWORD -v
 echo "Job '"$JOB_NAME_TO_CALL"' Executed!"
 
