@@ -15,7 +15,7 @@ cat $TEMPLATE_PATH
 # Generate job
 export COOKIE_JAR=/tmp/cookies
 
-JENKINS_CRUMB=$(curl --silent --cookie-jar $COOKIE_JAR -s -u $JENKINS_USER:$JENKINS_PASSWORD $JENKINS_URL'/crumbIssuer/api/json' | sed -E 's/.*"crumb":"?([^,"]*)"?.*/\1/')
+JENKINS_CRUMB=$(curl -k --silent --cookie-jar $COOKIE_JAR -s -u $JENKINS_USER:$JENKINS_PASSWORD $JENKINS_URL'/crumbIssuer/api/json' | sed -E 's/.*"crumb":"?([^,"]*)"?.*/\1/')
 JOB_NAME_TO_GENERATE=$JOB_DISPLAY_NAME
 
 JENKINS_JOB_URL=$JENKINS_URL'/job'
