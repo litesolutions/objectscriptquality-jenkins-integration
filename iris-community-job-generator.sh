@@ -24,6 +24,6 @@ then
     JENKINS_JOB_URL=$JENKINS_URL'/job/'$TARGET_FOLDER
 fi
 
-curl -K -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/createItem?name='$JOB_NAME_TO_GENERATE -H 'Jenkins-Crumb:'$JENKINS_CRUMB -H "Content-Type:text/xml" -u $JENKINS_USER:$JENKINS_PASSWORD --data-binary @$TEMPLATE_PATH
+curl -k -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/createItem?name='$JOB_NAME_TO_GENERATE -H 'Jenkins-Crumb:'$JENKINS_CRUMB -H "Content-Type:text/xml" -u $JENKINS_USER:$JENKINS_PASSWORD --data-binary @$TEMPLATE_PATH
      
 rm $TEMPLATE_PATH
