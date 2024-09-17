@@ -36,7 +36,7 @@ if [ "$EXISTING_JOB_NAME" != "$JOB_NAME_TO_CALL" ]
 then
     echo "Job does not exists"
 
-    curl -G -I --cookie $COOKIE_JAR --data-urlencode 'GIT_URL='$GIT_URL --data-urlencode 'BRANCH='$BRANCH -H "Content-Type:text/xml" -u $JENKINS_USER:$JENKINS_PASSWORD -v $JENKINS_URL'/job/job_generator/job/'$JOB_GENERATOR'/buildWithParameters?token='$JOB_BUILD_TRIGGER_ACCESS_TOKEN
+    curl -K -G -I --cookie $COOKIE_JAR --data-urlencode 'GIT_URL='$GIT_URL --data-urlencode 'BRANCH='$BRANCH -H "Content-Type:text/xml" -u $JENKINS_USER:$JENKINS_PASSWORD -v $JENKINS_URL'/job/job_generator/job/'$JOB_GENERATOR'/buildWithParameters?token='$JOB_BUILD_TRIGGER_ACCESS_TOKEN
     
     sleep 120
     
@@ -44,6 +44,6 @@ then
 fi
 
 echo "Invoke "$JOB_NAME_TO_CALL
-curl -X POST -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/build' -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_PASSWORD -v
+curl -K -X POST -s --cookie $COOKIE_JAR $JENKINS_JOB_URL'/build' -H 'Jenkins-Crumb:'$JENKINS_CRUMB -u $JENKINS_USER:$JENKINS_PASSWORD -v
 echo "Job '"$JOB_NAME_TO_CALL"' Executed!"
 
