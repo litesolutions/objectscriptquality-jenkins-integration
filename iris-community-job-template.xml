@@ -42,7 +42,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>cd &quot;$WORKSPACE&quot;
-/opt/sonarqube/sonar-scanner/bin/sonar-scanner -e -Dsonar.projectKey=&quot;$JOB_NAME&quot; -Dsonar.projectName=&quot;$JOB_NAME&quot; -Dsonar.sources=. -Dsonar.projectVersion=1.0 -Dsonar.links.scm={{GIT_URL}}
+/opt/sonarqube/sonar-scanner/bin/sonar-scanner -e -Dsonar.projectKey=&quot;$FOLDER_NAME:$JOB_BASE_NAME&quot; -Dsonar.projectName=&quot;$JOB_NAME&quot; -Dsonar.sources=. -Dsonar.projectVersion=1.0 -Dsonar.links.scm={{GIT_URL}}
 </command>
     </hudson.tasks.Shell>
   </builders>
